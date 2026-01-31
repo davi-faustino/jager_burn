@@ -9,7 +9,7 @@ A complete application for monitoring and projecting Jager token burns, with an 
 
 **🌐 [Live Demo](https://jager-calculator.vercel.app/)** | **📖 [API Docs](https://jager-burn-backend.fly.dev/docs)** | **🐛 [Report Bug](../../issues)** | **✨ [Request Feature](../../issues)**
 
-## � Preview
+## Preview
 
 <img width="1919" height="732" alt="image" src="https://github.com/user-attachments/assets/5f964a98-5e60-4bb9-9c6d-986d2a96a46a" />
 
@@ -17,7 +17,7 @@ A complete application for monitoring and projecting Jager token burns, with an 
 
 <img width="1559" height="787" alt="image" src="https://github.com/user-attachments/assets/9a50cbb5-a710-400b-91cd-2e58e241c636" />
 
-## �📋 About the Project
+## 📋 About the Project
 
 The **Jager Burn Calculator** is a tool that allows you to track in real-time the burning of Jager tokens sent to the dead address. The application offers:
 
