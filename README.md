@@ -11,9 +11,7 @@ A complete application for monitoring and projecting Jager token burns, with an 
 
 ## � Preview
 
-![Jager Burn Calculator Dashboard](https://via.placeholder.com/800x400/1a1a1a/ffffff?text=Add+your+screenshot+here)
-
-> **Note:** Replace the placeholder above with an actual screenshot of your application. You can use tools like [Screely](https://screely.com/) to create beautiful screenshots.
+![Jager Burn Calculator Dashboard](<img width="1919" height="732" alt="image" src="https://github.com/user-attachments/assets/13b052c5-c713-496b-b619-194508e8f397" />)
 
 ## �📋 About the Project
 
