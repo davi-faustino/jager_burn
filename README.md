@@ -11,7 +11,11 @@ A complete application for monitoring and projecting Jager token burns, with an 
 
 ## � Preview
 
-![Jager Burn Calculator Dashboard](<img width="1919" height="732" alt="image" src="https://github.com/user-attachments/assets/13b052c5-c713-496b-b619-194508e8f397" />)
+<img width="1919" height="732" alt="image" src="https://github.com/user-attachments/assets/5f964a98-5e60-4bb9-9c6d-986d2a96a46a" />
+
+<img width="1726" height="675" alt="image" src="https://github.com/user-attachments/assets/19faf70a-0791-41df-90ad-7fc53ce99b18" />
+
+<img width="1559" height="787" alt="image" src="https://github.com/user-attachments/assets/9a50cbb5-a710-400b-91cd-2e58e241c636" />
 
 ## �📋 About the Project
 
