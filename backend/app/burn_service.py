@@ -85,11 +85,11 @@ class BurnService:
         now = int(time.time())
         is_today = (day == utc_today())
 
-        # Regra de cache:
-        # - Dias passados: nunca mudam. Só buscamos no Moralis se:
-        #   a) force_refresh=True (backfill), ou
-        #   b) allow_fetch_missing_historical_days=True e não existe no cache.
-        # - Hoje: pode mudar. Atualiza a cada cache_ttl_seconds.
+        # Cache rule:
+        # - Past days: never change. We only fetch from Moralis if:
+        #   a) force_refresh=True (backfill), or
+        #   b) allow_fetch_missing_historical_days=True and doesn't exist in cache.
+        # - Today: can change. Updates every cache_ttl_seconds.
         if row is None:
             if (not is_today) and (not force_refresh) and (not self.allow_fetch_missing_historical_days):
                 raise MissingHistoricalCache([day_s])
@@ -116,7 +116,7 @@ class BurnService:
         meta = await self.get_meta()
         today = utc_today()
 
-        # "Last N days" = inclui hoje e os N-1 dias anteriores
+        # "Last N days" = includes today and the N-1 previous days
         start_day = today - timedelta(days=window_days - 1)
 
         cache_key = self._series_cache_key(window_days, today.isoformat())
@@ -160,7 +160,7 @@ class BurnService:
             total_raw += burn_raw
 
         if missing:
-            # Não fazer fetch histórico automaticamente (protege créditos)
+            # Don't fetch historical data automatically (protects credits)
             raise MissingHistoricalCache(sorted(set(missing)))
 
         payload = {
@@ -197,13 +197,13 @@ class BurnService:
                 "day": yesterday.isoformat(),
                 "burn_raw": str(y_raw),
                 "burn": fmt_decimal(raw_to_tokens(y_raw, meta.decimals)),
-                "label": "Ontem foram queimados X tokens",
+                "label": "Yesterday X tokens were burned",
             },
             "today": {
                 "day": today.isoformat(),
                 "burn_raw": str(t_raw),
                 "burn": fmt_decimal(raw_to_tokens(t_raw, meta.decimals)),
-                "label": "Hoje já foram queimados X tokens (Atualizado a cada 5 minutos)",
+                "label": "Today X tokens have been burned (Updated every 5 minutes)",
                 "last_updated_epoch": t_updated,
             },
             "data_source": "moralis+sqlite-cache",
@@ -244,7 +244,7 @@ class BurnService:
         if model == "mean":
             x = sum(burns_tokens) / Decimal(len(burns_tokens))
             y = x * Decimal(horizon_days)
-            assumption = "Média diária do burn nos últimos W dias."
+            assumption = "Daily average burn over the last W days."
         else:
             cum = []
             running = Decimal(0)
@@ -258,11 +258,11 @@ class BurnService:
                 used_model = "regression_fallback_mean"
                 x = sum(burns_tokens) / Decimal(len(burns_tokens))
                 y = x * Decimal(horizon_days)
-                assumption = "Regressão instável/negativa; fallback para média."
+                assumption = "Unstable/negative regression; fallback to mean."
             else:
                 x = Decimal(str(slope))
                 y = x * Decimal(horizon_days)
-                assumption = "Regressão linear no burn acumulado (inclinação = tokens/dia)."
+                assumption = "Linear regression on cumulative burn (slope = tokens/day)."
 
         tokenomics = await self.token_metrics()
         max_supply = Decimal(tokenomics["max_supply_tokens"])

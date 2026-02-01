@@ -30,8 +30,8 @@ origins = _cors_list()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,        # Ex.: ["http://localhost:3000", "https://seu-front.com"]
-    allow_credentials=False,      # deixe False a menos que você use cookies/credentials
+    allow_origins=origins,        # e.g.: ["http://localhost:3000", "https://your-front.com"]
+    allow_credentials=False,      # leave False unless you use cookies/credentials
     allow_methods=["*"],
     allow_headers=["*"],
 )

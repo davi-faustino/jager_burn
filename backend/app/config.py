@@ -16,13 +16,13 @@ class Settings(BaseModel):
 
     # Cache local (SQLite)
     cache_db_path: str = _env("CACHE_DB_PATH", "./cache.sqlite3")
-    cache_ttl_seconds: int = int(_env("CACHE_TTL_SECONDS", "300"))  # 5 minutos
+    cache_ttl_seconds: int = int(_env("CACHE_TTL_SECONDS", "300"))  # 5 minutes
 
-    # Se FALSE: endpoints nunca buscam dias históricos faltantes no Moralis (protege créditos).
-    # Use o script de backfill para preencher histórico.
+    # If FALSE: endpoints never fetch missing historical days from Moralis (protects credits).
+    # Use the backfill script to populate history.
     allow_fetch_missing_historical_days: bool = _env_bool("ALLOW_FETCH_MISSING_HISTORICAL_DAYS", "false")
 
-    # Cache do resultado do /burn/series e /burn/projection (reduz chamadas repetidas do front)
+    # Cache for /burn/series and /burn/projection results (reduces repeated frontend calls)
     series_cache_ttl_seconds: int = int(_env("SERIES_CACHE_TTL_SECONDS", _env("CACHE_TTL_SECONDS", "300")))
 
     max_window_days: int = int(_env("MAX_WINDOW_DAYS", "3650"))

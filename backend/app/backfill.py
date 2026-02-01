@@ -27,7 +27,7 @@ async def run(start: date):
         decimals_fallback=settings.token_decimals,
         cache_ttl_seconds=settings.cache_ttl_seconds,
         max_supply_tokens=settings.max_supply_tokens,
-        allow_fetch_missing_historical_days=True,  # backfill sempre pode buscar histórico
+        allow_fetch_missing_historical_days=True,  # backfill can always fetch historical data
         series_cache_ttl_seconds=settings.series_cache_ttl_seconds,
     )
 
